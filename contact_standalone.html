@@ -236,7 +236,7 @@ nav a:hover { background: var(--bg-gray); color: var(--navy); }
 footer { background: #0F1E2E; padding: 40px 5%; }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
 .footer-logo { font-family: 'Shippori Mincho', serif; font-size: 18px; color: #fff; font-weight: 700; margin-bottom: 8px; }
-.footer-info { font-size: 14px; color: rgba(255,255,255,0.38); line-height: 1.9; }
+.footer-info { font-size: 14px; color: #fff; line-height: 1.9; }
 .footer-nav { display: flex; flex-direction: column; gap: 10px; }
 .footer-nav a { font-size: 15px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
 .footer-nav a:hover { color: var(--orange-light); }
@@ -350,6 +350,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
   .special-types { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
+  .contact-info-grid { display: none; }
   .products-grid, .industry-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
   .hero-cards { grid-template-columns: 1fr 1fr; }
@@ -906,13 +907,13 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 <footer style="background:var(--navy);color:rgba(255,255,255,0.65);padding:40px 5%;text-align:center;font-size:13px;">
   <div style="font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;">有限会社 井上パッケージ</div>
   <div style="margin-bottom:8px;">〒604-8304 京都府京都市中京区御池上ル織物屋町213</div>
-  <div style="margin-bottom:20px;">TEL: 075-841-2116　Mail: <a href="mailto:inopa8412116@gmail.com">inopa8412116@gmail.com</a></div>
+  <div style="margin-bottom:20px;">TEL: 075-841-2116　Mail: <a href="mailto:inopa8412116@gmail.com" style="color:#fff;text-decoration:underline;">inopa8412116@gmail.com</a></div>
   <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;">
     © 2024 有限会社 井上パッケージ All Rights Reserved.
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 
 function openDrawer() {
   document.getElementById('drawer').classList.add('open');
@@ -962,18 +963,4 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   errorMsg.style.display = 'none';
 
   // reply-toにメールアドレスをセット
-  document.getElementById('_replyto').value = email;
-
-  // 送信ボタンを無効化
-  var btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = '送信中...';
-
-  var form = document.getElementById('contactForm');
-  var data = new FormData(form);
-
-  fetch(form.action, {
-    method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  }).then(fu
+  document.
