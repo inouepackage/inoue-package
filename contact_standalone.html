@@ -351,6 +351,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 }
 @media (max-width: 600px) {
   .contact-info-grid { display: none; }
+  .contact-info-grid { display: none; }
   .products-grid, .industry-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
   .hero-cards { grid-template-columns: 1fr 1fr; }
@@ -952,15 +953,4 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   var firstName = document.getElementById('firstName').value.trim();
   var email = document.getElementById('email').value.trim();
   var inquiryType = document.getElementById('inquiryType').value;
-  var message = document.getElementById('message').value.trim();
-  var privacyCheck = document.getElementById('privacyCheck').checked;
-  var errorMsg = document.getElementById('errorMsg');
-
-  if (!lastName || !firstName || !email || !inquiryType || !message || !privacyCheck) {
-    errorMsg.style.display = 'block';
-    return;
-  }
-  errorMsg.style.display = 'none';
-
-  // reply-toにメールアドレスをセット
-  document.
+  var message = document.getElementById
