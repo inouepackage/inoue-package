@@ -910,30 +910,52 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 <footer style="background:var(--navy);color:rgba(255,255,255,0.65);padding:40px 5%;text-align:center;font-size:13px;">
   <div style="font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;">有限会社 井上パッケージ</div>
   <div style="margin-bottom:8px;">〒604-8304 京都府京都市中京区御池上ル織物屋町213</div>
-  <div style="margin-bottom:20px;">TEL: 075-841-2116　Mail: <a href="mailto:inopa8412116@gmail.com" style="color:#fff;text-decoration:underline;">inopa8412116@gmail.com</a></div>
+  <div style="margin-bottom:20px;">TEL: 075-841-2116　Mail: <span id="mail-footer-c"></span></div>
   <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:16px;">
     © 2024 有限会社 井上パッケージ All Rights Reserved.
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+(function() {
+  // ハンバーガーメニュー
+  var btn      = document.getElementById('hamburgerBtn');
+  var drawer   = document.getElementById('drawer');
+  var overlay  = document.getElementById('drawerOverlay');
+  var closeBtn = document.getElementById('drawerClose');
 
-function openDrawer() {
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('drawerOverlay').classList.add('open');
-  document.getElementById('hamburgerBtn').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeDrawer() {
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('drawerOverlay').classList.remove('open');
-  document.getElementById('hamburgerBtn').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('hamburgerBtn').addEventListener('click', openDrawer);
-document.getElementById('drawerClose').addEventListener('click', closeDrawer);
-document.getElementById('drawerOverlay').addEventListener('click', closeDrawer);
+  function openDrawer() {
+    if (drawer)  drawer.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    if (btn)     btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    if (drawer)  drawer.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    if (btn)     btn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.closeDrawer = closeDrawer;
 
-var floatCta = document.querySelector('.float-cta');
-function checkCta() {
-  var contact = document.getElementById('co
+  if (btn)      btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay)  overlay.addEventListener('click', closeDrawer);
+  if (drawer) {
+    drawer.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeDrawer);
+    });
+  }
+
+  // メールアドレスをJSで組み立て（Cloudflare難読化回避）
+  var u = 'inopa8412116';
+  var d = 'gmail.com';
+  var m = u + '@' + d;
+  var mailCard   = document.getElementById('mail-card');
+  var mailFooter = document.getElementById('mail-footer-c');
+  if (mailCard)   mailCard.innerHTML   = '<a href="mailto:' + m + '">' + m + '</a>';
+  if (mailFooter) mailFooter.innerHTML = '<a href="mailto:' + m + '" style="color:#fff;text-decoration:underline;">' + m + '</a>';
+})();
+</script>
+</body>
+</html>

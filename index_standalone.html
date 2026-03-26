@@ -951,7 +951,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
         <tr><td>所在地</td><td>〒604-8304<br>京都府京都市中京区御池上ル織物屋町213</td></tr>
         <tr><td>電話番号</td><td>075-841-2116</td></tr>
         <tr><td>FAX</td><td>075-841-2141</td></tr>
-        <tr><td>メール</td><td><a href="mailto:inopa8412116@gmail.com">inopa8412116@gmail.com</a></td></tr>
+        <tr><td>メール</td><td><span id="mail-table"></span></td></tr>
         <tr><td>事業内容</td><td>段ボール・梱包資材の製造・販売、包装設計・デザイン、オーダーメイド梱包資材の制作</td></tr>
         <tr><td>主な取引先</td><td>伏見稲荷大社・池坊・（株）セロレーベル 他多数</td></tr>
         <tr><td>営業時間</td><td>9:00〜17:00（土日祝を除く）</td></tr>
@@ -991,7 +991,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
   <div class="footer-inner">
     <div>
       <div class="footer-logo">有限会社 井上パッケージ</div>
-      <div class="footer-info">〒604-8304 京都府京都市中京区御池上ル織物屋町213<br>TEL: 075-841-2116　Mail: <a href="mailto:inopa8412116@gmail.com">inopa8412116@gmail.com</a></div>
+      <div class="footer-info">〒604-8304 京都府京都市中京区御池上ル織物屋町213<br>TEL: 075-841-2116　Mail: <span id="mail-footer"></span></div>
     </div>
 
   </div>
@@ -1001,7 +1001,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 <!-- FLOAT CTA -->
 <a href="contact_standalone.html" class="float-cta">📋 お見積もり・お問い合わせ</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function() {
   var btn      = document.getElementById('hamburgerBtn');
   var drawer   = document.getElementById('drawer');
@@ -1019,4 +1019,30 @@ footer { background: #0F1E2E; padding: 40px 5%; }
     overlay.classList.remove('open');
     btn.classList.remove('open');
     document.body.style.overflow = '';
- 
+  }
+  window.closeDrawer = closeDrawer;
+
+  if (btn)      btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay)  overlay.addEventListener('click', closeDrawer);
+  if (drawer) {
+    drawer.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeDrawer);
+    });
+  }
+})();
+
+  // メールアドレスをJSで組み立て（Cloudflare難読化回避）
+  (function() {
+    var u = 'inopa8412116';
+    var d = 'gmail.com';
+    var m = u + '@' + d;
+    var link = '<a href="mailto:' + m + '">' + m + '</a>';
+    var t = document.getElementById('mail-table');
+    var f = document.getElementById('mail-footer');
+    if (t) t.innerHTML = link;
+    if (f) f.innerHTML = '<a href="mailto:' + m + '" style="color:#fff;">' + m + '</a>';
+  })();
+</script>
+</body>
+</html>
