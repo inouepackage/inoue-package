@@ -1003,32 +1003,6 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 
 <script>
 (function() {
-  var btn     = document.getElementById('hamburgerBtn');
-  var drawer  = document.getElementById('drawer');
-  var overlay = document.getElementById('drawerOverlay');
-  var closeBtn = document.getElementById('drawerClose');
-
-  function openDrawer() {
-    drawer.classList.add('open');
-    overlay.classList.add('open');
-    btn.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeDrawer() {
-    drawer.classList.remove('open');
-    overlay.classList.remove('open');
-    btn.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  // グローバルに公開（onclick="closeDrawer()" で呼ばれるため）
-  window.closeDrawer = closeDrawer;
-
-  if (btn)     btn.addEventListener('c
-
-<script>
-(function() {
   var btn      = document.getElementById('hamburgerBtn');
   var drawer   = document.getElementById('drawer');
   var overlay  = document.getElementById('drawerOverlay');
@@ -1052,7 +1026,9 @@ footer { background: #0F1E2E; padding: 40px 5%; }
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if (overlay)  overlay.addEventListener('click', closeDrawer);
   if (drawer) {
-    drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeDrawer); });
+    drawer.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeDrawer);
+    });
   }
 })();
 </script>
