@@ -338,8 +338,9 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 
 /* RESPONSIVE */
 @media (max-width: 960px) {
-  .hamburger-btn { display: flex; }
-  nav a:not(.nav-cta) { display: none; }
+  .hamburger-btn { display: none; }
+  nav a { display: none; }
+  .nav-cta { display: none; }
   .products-grid { grid-template-columns: 1fr 1fr; }
   .industry-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -356,6 +357,8 @@ footer { background: #0F1E2E; padding: 40px 5%; }
   .hero-cards { grid-template-columns: 1fr 1fr; }
   .contact-box { padding: 36px 20px; }
   nav a:not(.nav-cta) { display: none; }
+  .nav-cta { display: none; }
+  .hamburger-btn { display: none; }
   .topbar { flex-direction: column; gap: 6px; text-align: center; }
   .flute-compare { grid-template-columns: 1fr; }
   .materials-grid { grid-template-columns: 1fr 1fr; }
@@ -736,7 +739,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 <div class="contact-hero">
   <div class="contact-hero-en">Contact / Estimate</div>
   <h1>お見積もり・お問い合わせ</h1>
-  <p>段ボール・梱包資材に関するご相談・お見積もりは、<br>お気軽にご連絡ください。無料サンプルも承っております。</p>
+  <p>段ボール・梱包資材に関するご相談・お見積もりは、お気軽にご連絡ください。<br>無料サンプルも承っております。</p>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -913,7 +916,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 function openDrawer() {
   document.getElementById('drawer').classList.add('open');
@@ -933,15 +936,4 @@ document.getElementById('drawerOverlay').addEventListener('click', closeDrawer);
 
 var floatCta = document.querySelector('.float-cta');
 function checkCta() {
-  var contact = document.getElementById('contact');
-  if (!contact || !floatCta) return;
-  var rect = contact.getBoundingClientRect();
-  var inView = rect.top < window.innerHeight && rect.bottom > 0;
-  floatCta.style.opacity = inView ? '0' : '1';
-  floatCta.style.pointerEvents = inView ? 'none' : 'auto';
-}
-window.addEventListener('scroll', checkCta);
-checkCta();
-
-// Formspree送信処理
-document.getElementById('contactForm').add
+  var contact = document.getElementById('co

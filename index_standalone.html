@@ -1001,7 +1001,7 @@ footer { background: #0F1E2E; padding: 40px 5%; }
 <!-- FLOAT CTA -->
 <a href="contact_standalone.html" class="float-cta">📋 お見積もり・お問い合わせ</a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function() {
   var btn      = document.getElementById('hamburgerBtn');
   var drawer   = document.getElementById('drawer');
@@ -1019,18 +1019,4 @@ footer { background: #0F1E2E; padding: 40px 5%; }
     overlay.classList.remove('open');
     btn.classList.remove('open');
     document.body.style.overflow = '';
-  }
-  window.closeDrawer = closeDrawer;
-
-  if (btn)      btn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  if (overlay)  overlay.addEventListener('click', closeDrawer);
-  if (drawer) {
-    drawer.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', closeDrawer);
-    });
-  }
-})();
-</script>
-</body>
-</html>
+ 
